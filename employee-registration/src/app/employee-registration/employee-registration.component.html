@@ -1,0 +1,56 @@
+<main class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card">
+        <header class="card-header">
+          <h4 class="card-title mt-2">Sign up</h4>
+        </header>
+        <article class="card-body">
+          <form #employeeForm = "ngForm" (submit)="registerEmployee(employeeForm)">
+            <div class="form-row">
+              <div class="col form-group">
+                <label>First Name*</label>
+                <input type="text" id="firstName" name="firstName" [(ngModel)]="employee.firstName" #firstNameInput="ngModel" [required]="true">
+                <div *ngIf="!employee.firstName && firstNameInput.touched">
+                  First Name is required.
+                </div>
+              </div>
+              <div class="col form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" placeholder=" " [(ngModel)]="employee.lastName" name="lastName" [required]="true">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Email Address*</label>
+              <input type="email" class="form-control" placeholder="" [(ngModel)]="employee.email" #emailInput="ngModel" name="email" [required]="true">
+              <div *ngIf="!employee.email && emailInput.touched">
+                Email is required.
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Date of Birth</label>
+              <div class="col-sm-9">
+                <input type="date" id="birthDate" class="form-control" [(ngModel)]="employee.dob" name="birthDate" #birthDateInput="ngModel" [required]="true">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label>Department</label>
+                <select id="inputState" class="form-control" [(ngModel)]="employee.departmentId" name="department" [required]="true">
+                  <option value="0" selected>Choose...</option>
+                  <option value="1">IT</option>
+                  <option value="2">Admin</option>
+                  <option value="3">Software</option>
+                  <option value="4">HR</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-primary btn-block"> Register </button>
+            </div>
+          </form>
+        </article>
+      </div>
+    </div>
+  </div>
+</main>
